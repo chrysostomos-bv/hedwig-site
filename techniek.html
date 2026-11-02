@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hedwig – hoe Hedwig weet wie er praat</title>
+<meta name="description" content="Technische notitie: hoe Hedwig op één iPad herkent wie er aan tafel praat. Gepubliceerd als stand van de techniek.">
+<style>
+@font-face{font-family:"Atkinson Hyperlegible";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/AtkinsonHyperlegible-Regular.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/AtkinsonHyperlegible-Bold.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/AtkinsonHyperlegible-Italic.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-style:italic;font-weight:700;font-display:swap;src:url(fonts/AtkinsonHyperlegible-BoldItalic.woff2) format("woff2")}
+:root{--bg:#FFF8E7;--ink:#1C1C1E;--muted:#5b5b5f;--green:#4C9A2F;--yellow:#F6C200;--azure:#007DB3;--red:#CC0605;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:19px;line-height:1.55}
+a{color:var(--azure)}
+header{display:flex;align-items:center;gap:16px;padding:22px 20px;max-width:860px;margin:0 auto}
+.mark{position:relative;width:48px;height:48px;border-radius:22.4%;overflow:hidden;flex:none;background:var(--bg)}
+.mark i{position:absolute;width:65.6%;height:65.6%;border-radius:50%;box-shadow:0 0 0 2px var(--bg)}
+.mark .g{background:var(--green);left:-1.6%;top:-1.6%}.mark .y{background:var(--yellow);right:-1.6%;top:-1.6%}
+.mark .a{background:var(--azure);left:-1.6%;bottom:-1.6%}.mark .r{background:var(--red);right:-1.6%;bottom:-1.6%}
+header .name{font-size:28px;font-weight:700}
+nav{max-width:860px;margin:0 auto;padding:0 20px 8px;display:flex;gap:18px;flex-wrap:wrap}
+nav a{text-decoration:none;font-weight:700}
+main{max-width:860px;margin:0 auto;padding:12px 20px 60px}
+h1{font-size:34px;line-height:1.2;margin:.4em 0}
+h2{font-size:24px;margin-top:1.6em}
+h3{font-size:20px;margin-top:1.4em}
+p.lead{font-size:22px}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:17px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid #e6dcc4}
+th{background:#f3ead4}
+.card{background:var(--card);border:2px solid #e6dcc4;border-radius:18px;padding:18px 22px;margin:1em 0}
+footer{max-width:860px;margin:0 auto;padding:20px;color:var(--muted);font-size:16px;border-top:1px solid #e6dcc4}
+.muted{color:var(--muted)}
+@media (max-width:600px){body{font-size:17px}h1{font-size:28px}}
+</style>
+</head>
+<body>
+<header><div class="mark"><i class="g"></i><i class="y"></i><i class="a"></i><i class="r"></i></div><div class="name">Hedwig</div></header>
+<nav><a href="/">Hedwig</a><a href="/meedoen.html">Meedoen</a><a href="/hulp.html">Hulp en contact</a><a href="/privacy.html">Privacy</a><a href="/licentie.html">Licentievoorwaarden</a><a href="/techniek.html">Techniek</a><a href="https://chrysostomos.nl">Uitgever</a></nav>
+<main>
+<h1>Hoe Hedwig weet wie er praat</h1><p class="lead"><strong>Herkenning van de spreker aan een familietafel op één iPad.</strong></p>
+<p>Kai Guldemond, Chrysostomos B.V., Amsterdam. Versie 1, 2 november 2026. Dit document beschrijft de werkwijze van de iPad-app Hedwig en wordt gepubliceerd als stand van de techniek. Het mag vrij worden gebruikt.</p>
+<div class="card"><p>Deze pagina is voor wie wil weten hoe Hedwig technisch werkt. Gebruikt u Hedwig gewoon aan tafel? Dan vindt u alles wat u nodig heeft bij <a href="/hulp.html">Hulp en contact</a>.</p>
+<p class="muted">Gepubliceerd op 2 november 2026 als beschrijving van de stand van de techniek, zodat de werkwijze vrij blijft. Tekst: CC BY 4.0. Ook ingediend als defensieve publicatie (TDCommons).</p></div>
+<h2>1. Het probleem</h2>
+<p>Eén iPad staat rechtop midden op een tafel waar drie tot acht mensen door elkaar praten. Een van hen hoort slecht en leest mee. Bij elke zin moet de naam en de foto staan van wie hem zei, binnen een seconde of twee, zonder dat iemand iets draagt of aanraakt, en zonder dat er iets wordt bewaard of naar een server gaat (behalve, met toestemming, het geluid naar een spraakdienst).</p>
+<h2>2. De werkwijze in het kort</h2>
+<p>Hedwig combineert vier bronnen van bewijs over wie er praat, in deze volgorde van gewicht:</p>
+<ol>
+<li><strong>Stemprint</strong> — een vector per stukje spraak, vergeleken met de stemmen die de familie bij een voorstelrondje heeft opgenomen.</li>
+<li><strong>Stemmen van vandaag</strong> — stemmen die niet bekend zijn, maar wel vaker voorkomen in dit gesprek, krijgen een tijdelijke naam.</li>
+<li><strong>Richting</strong> — het verschil in sterkte en aankomsttijd tussen de linker- en rechtermicrofoon van de iPad, en bij een losse tafelmicrofoon het verschil tussen de kanalen.</li>
+<li><strong>Gezicht en mond</strong> — de voorcamera, die bij het voorstelrondje al een foto maakt, kan ook zien wie in beeld zijn mond beweegt.</li>
+</ol>
+<p>Punten 1 en 2 zijn gebouwd en in gebruik; 3 is gebouwd als meting (proefstand); 4 is ontworpen en wordt gebouwd. Alle vier blijven op het apparaat.</p>
+<h2>3. Stemprints en de regels</h2>
+<p><strong>Het voorstelrondje.</strong> De iPad gaat de tafel rond. Ieder typt zijn naam, kijkt in de camera voor één foto en leest een paar zinnen voor. Uit die zinnen maakt een spreker-inbeddingsmodel (pyannote-achtig, 256 dimensies, op het apparaat via CoreML) een of meer stemprints. De voorleeszin bevat de namen en woorden die de familie heeft opgegeven, zodat die meteen in de woordherkenning zitten.</p>
+<p><strong>Vergelijken.</strong> Elk stuk spraak (minimaal 0,8 s) krijgt een print. De afstand is de cosinusafstand. Meerdere prints van één persoon worden niet apart bewaard maar gemiddeld tot één vergelijkingsprint; dat halveert de fout ten opzichte van „neem de dichtstbijzijnde print”, omdat het gemiddelde wegstreept wat tussen opnames verschilde.</p>
+<p><strong>Drempels (gemeten op twee vaste opnames, oktober 2026).</strong> Zelfde stem: afstand &lt; 0,45. Bekende stem: &lt; 0,50. Tussen 0,50 en 0,62 een <em>suggestieband</em>: Hedwig toont de naam als voorstel („Is dit Anna?”) in plaats van hem vast te zetten. Twee stemmen van vandaag worden samengevoegd als hun centroïden &lt; 0,60 uit elkaar liggen. Een nieuwe stem telt pas mee na 2,0 s eigen spraak; een stem die 120 s niet gehoord is, wordt geparkeerd en weggevouwen. Kleverigheid (0,05) en een dubbelzinnigheidsmarge (0,03) voorkomen dat een stem bij elke zin wisselt tussen twee bijna even goede kandidaten.</p>
+<p><strong>Stoelregel.</strong> Alleen bekende personen die vandaag gehoord of aangewezen zijn, bezetten een „stoel”; het maximum aantal sprekers is het aantal aanwezigen plus twee, zodat een onbekende stem niet de plaats van een stille aanwezige inneemt.</p>
+<p><strong>Afstandsmeting als maat.</strong> De app meet per gesprek de kleinste afstand tussen twee stemmen (marge) en de spreiding binnen één stem. Op een opname met drie mannen lag de marge op 0,33–0,38 en de spreiding tot 0,12; op een talkshow met drie duidelijk verschillende stemmen ≥ 0,67. Die getallen bepalen of extra bewijs (richting, gezicht) nodig is. Regels zijn bevroren en worden bewaakt met een regressietest op de prints van vaste opnames (geen geluid).</p>
+<p><strong>Woorden.</strong> Spraak-naar-tekst gebeurt op het apparaat (Parakeet TDT, 25 talen) of, met toestemming van de tafel, via een spraakdienst (Speechmatics) die ook sprekers onderscheidt; in dat geval worden beide sprekerindelingen naast elkaar gebruikt. De familie geeft namen en woorden op die aan de herkenning worden meegegeven.</p>
+<h2>4. Richting uit de microfoons</h2>
+<p>Moderne iPads nemen in stereo op. Hedwig leest per stuk spraak (a) het verschil in geluidssterkte tussen links en rechts in dB en (b) het verschil in aankomsttijd via kruiscorrelatie over ±1 ms (de microfoons zitten enkele centimeters uit elkaar; 1 ms is 34 cm padverschil). Daaruit volgt per stuk een grove richting: links, midden, rechts. Omdat de iPad rechtop in zijn standaard staat, is „links/rechts” stabiel binnen één gesprek. De richting dient niet om iemand te herkennen, maar als extra bewijs wanneer twee stemprints te dicht bij elkaar liggen: zit Anna links en Bram rechts, en komt een stuk duidelijk van links, dan wint Anna bij een twijfelgeval in de suggestieband. Met een losse meerkanaals tafelmicrofoon (USB-C) wordt de richting fijner en 360° rond. Maat voor „groen”: richting klopt met de spreker in ≥ 80 % van de stukken.</p>
+<h2>5. Gezicht en mond</h2>
+<p>De voorcamera maakt bij het rondje één foto per persoon. Dezelfde camera kan tijdens het gesprek, op het apparaat en zonder beelden te bewaren, zien welke gezichten in beeld zijn en welk gezicht op dat moment zijn mond beweegt (Vision-gezichtsherkenning en mondpunten, met Middelpunt/Center Stage voor een stabiel groepsbeeld). Dat bewijs wordt gekoppeld aan de stemprint van hetzelfde stuk spraak: wie zijn mond beweegt terwijl een stem klinkt, is de waarschijnlijke spreker. De koppeling verbetert zichzelf: een stuk waarin stem, richting en mond overeenstemmen, mag als extra print bij die persoon worden bijgeschreven (met toestemming, en nooit als opname). Het gezicht wordt niet herkend aan biometrie; alleen de positie in beeld en de mondbeweging worden gebruikt, en alleen tijdens het gesprek.</p>
+<h2>6. Hoe de bronnen samenkomen</h2>
+<p>Per stuk spraak: stemprint geeft een kandidaat met een afstand; valt die onder de harde drempel, dan is dat de spreker. Valt hij in de suggestieband of is de marge tussen twee kandidaten kleiner dan 0,03, dan tellen richting en mond mee als doorslag. Is er geen bekende kandidaat, dan wordt het een stem van vandaag, met tijdelijke naam, die de familie met één tik een naam kan geven. Alles wordt per gesprek vergeten; alleen de stemprints van bekende personen en hun foto blijven, op het apparaat, buiten back-ups.</p>
+<h2>7. Wat bewust niet wordt gedaan</h2>
+<p>Geen server, geen account, geen opslag van gesprekken of beelden; geen gezichtsherkenning als identificatie; geen microfoons op de personen; geen training op gebruikersdata. De lezer zelf wordt wel herkend (voor „wacht” en „verder”) maar haar woorden worden niet getoond.</p>
+<hr>
+<h2>English summary</h2>
+<p><em>Hedwig — speaker attribution at a family table on a single iPad.</em> One iPad stands upright in the middle of a table; one person who is hard of hearing reads along. Each sentence must carry the name and photo of who said it, within a second or two, with nothing worn or touched, and nothing stored or sent (except, with consent, audio to a speech service). Hedwig combines four sources of evidence, on device: (1) voice prints — a 256-dimensional speaker embedding (pyannote-like, CoreML) per stretch of speech ≥ 0.8 s, compared by cosine distance with prints recorded during an introduction round in which each person types a name, takes one photo and reads a few sentences; several prints of one person are averaged into one comparison print; thresholds measured on fixed recordings: same voice &lt; 0.45, known voice &lt; 0.50, a suggestion band 0.50–0.62 in which the name is offered rather than fixed, merge of two session voices &lt; 0.60, 2.0 s before a new voice counts, 120 s parking, stickiness 0.05, ambiguity 0.03, and a "seat" rule (only known people heard or pointed out today occupy a seat; maximum speakers = present + 2); (2) today's voices — unknown but recurring voices get a temporary name; (3) direction — level difference (dB) and arrival-time difference (cross-correlation over ±1 ms) between the iPad's left and right microphones (or the channels of an external table microphone), yielding left/centre/right per stretch, used as a tie-breaker when prints are close; (4) face and mouth — the front camera that already took the photo detects, on device and without storing images, which face in view is moving its mouth while a voice sounds, and links that to the voice print of the same stretch; a stretch on which voice, direction and mouth agree may be added as a further print for that person. Per stretch: a candidate under the hard threshold wins; within the suggestion band or with a margin &lt; 0.03, direction and mouth decide; otherwise a temporary voice is created that the family can name with one tap. The app measures per conversation the thinnest margin between voices and the spread within one voice (observed: 0.33–0.38 margin on three men, ≥ 0.67 on a talk show), which decides whether the extra evidence is needed. Rules are frozen and guarded by a regression test on stored prints. Nothing is kept beyond the known people's prints and photos, on device, outside backups; no face recognition as identification; no training on user data. Published as prior art; free to use.</p>
+</main>
+<footer>Hedwig is een uitgave van Chrysostomos B.V., Amsterdam · © 2026 Kai Guldemond · Deze notitie: CC BY 4.0.</footer>
+</body>
+</html>
