@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hedwig – vragen en oplossingen</title>
+<meta name="description" content="Veelgestelde vragen over Hedwig en een stappenwijzer: wat ziet u, en wat kunt u doen.">
+<style>
+@font-face{font-family:"Atkinson Hyperlegible";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/AtkinsonHyperlegible-Regular.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/AtkinsonHyperlegible-Bold.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/AtkinsonHyperlegible-Italic.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-style:italic;font-weight:700;font-display:swap;src:url(fonts/AtkinsonHyperlegible-BoldItalic.woff2) format("woff2")}
+:root{--bg:#FFF8E7;--ink:#1C1C1E;--muted:#5b5b5f;--green:#4C9A2F;--yellow:#F6C200;--azure:#007DB3;--red:#CC0605;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:19px;line-height:1.55}
+a{color:var(--azure)}
+header{display:flex;align-items:center;gap:16px;padding:22px 20px;max-width:860px;margin:0 auto}
+.mark{position:relative;width:48px;height:48px;border-radius:22.4%;overflow:hidden;flex:none;background:var(--bg)}
+.mark i{position:absolute;width:65.6%;height:65.6%;border-radius:50%;box-shadow:0 0 0 2px var(--bg)}
+.mark .g{background:var(--green);left:-1.6%;top:-1.6%}.mark .y{background:var(--yellow);right:-1.6%;top:-1.6%}
+.mark .a{background:var(--azure);left:-1.6%;bottom:-1.6%}.mark .r{background:var(--red);right:-1.6%;bottom:-1.6%}
+header .name{font-size:28px;font-weight:700}
+nav{max-width:860px;margin:0 auto;padding:0 20px 8px;display:flex;gap:18px;flex-wrap:wrap}
+nav a{text-decoration:none;font-weight:700}
+main{max-width:860px;margin:0 auto;padding:12px 20px 60px}
+h1{font-size:34px;line-height:1.2;margin:.4em 0}
+h2{font-size:24px;margin-top:1.6em}
+h3{font-size:20px;margin-top:1.4em}
+p.lead{font-size:22px}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:17px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid #e6dcc4}
+th{background:#f3ead4}
+.card{background:var(--card);border:2px solid #e6dcc4;border-radius:18px;padding:18px 22px;margin:1em 0}
+footer{max-width:860px;margin:0 auto;padding:20px;color:var(--muted);font-size:16px;border-top:1px solid #e6dcc4}
+.muted{color:var(--muted)}
+.cta{display:inline-block;background:var(--green);color:#fff;text-decoration:none;font-weight:700;font-size:21px;padding:14px 26px;border-radius:16px;margin:.4em 0}
+.cta.alt{background:var(--azure)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:1em 0}
+.step{background:var(--card);border:2px solid #e6dcc4;border-radius:18px;padding:16px 18px}
+.step b{display:inline-block;width:38px;height:38px;border-radius:50%;background:#1C3B6F;color:#fff;text-align:center;line-height:38px;font-size:20px;margin-bottom:8px}
+.step h3{margin:.2em 0 .4em;font-size:20px}
+.step p{margin:0;font-size:17px}
+.wijzer{background:var(--card);border:2px solid #e6dcc4;border-radius:18px;padding:18px 22px;margin:1em 0}
+.wijzer label{display:block;font-weight:700;margin-bottom:8px}
+.wijzer select{font:inherit;font-size:19px;padding:12px 14px;border:3px solid #1C3B6F;border-radius:14px;background:#fff;width:100%;max-width:640px}
+.antwoord{display:none;margin-top:16px;padding:16px 18px;background:#FFF3C4;border-radius:14px}
+.antwoord.open{display:block}
+.faq h3{margin:1.4em 0 .3em;font-size:21px}
+.faq h3 small{color:var(--muted);font-weight:400;font-size:15px;margin-left:8px}
+.faq p{margin:.3em 0}
+.faq ol{margin:.3em 0 .6em 1.2em}
+.faq ol li{margin:.25em 0}
+.stap{color:var(--muted);font-size:16px}
+@media (max-width:600px){body{font-size:17px}h1{font-size:28px}.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="mark"><i class="g"></i><i class="y"></i><i class="a"></i><i class="r"></i></div><div class="name">Hedwig</div></header>
+<nav><a href="/">Hedwig</a><a href="/meedoen.html">Meedoen</a><a href="/hulp.html">Hulp en contact</a><a href="/vragen.html">Vragen en oplossingen</a><a href="/privacy.html">Privacy</a><a href="/licentie.html">Licentievoorwaarden</a><a href="/techniek.html">Techniek</a><a href="https://chrysostomos.nl">Uitgever</a></nav>
+<main>
+<h1>Vragen en oplossingen</h1>
+<p class="lead">Wat ziet u? Kies het hieronder, dan staan de stappen eronder. Elk antwoord heeft een nummer (H1 tot H15); dat nummer noemen wij ook in onze mails.</p>
+<div class="wijzer">
+<label for="keuze">Wat ziet u?</label>
+<select id="keuze"><option value="">Kies…</option><option value="H1">Hedwig hoort niets; het bolletje blijft rood</option><option value="H2">De namen kloppen niet, of iedereen heet „Spreker 1”</option><option value="H3">Het gaat te snel; de lezer raakt in de war of wordt moe</option><option value="H4">Hedwig stopt na een paar minuten, of meldt dat het tegoed op is</option><option value="H5">Zonder internet werkt het niet</option><option value="H6">Ik kan Hedwig niet installeren, of de TestFlight-link werkt niet</option><option value="H7">De foto's onderin zijn weg, of de tekst is verdwenen</option><option value="H8">Nieuwe iPad: alle personen zijn weg</option><option value="H9">Iemand wil dat zijn foto of stem verdwijnt</option><option value="H10">De televisie laat het gesprek niet zien</option><option value="H11">Het toetsenbord staat over de tekst, of knoppen vallen weg bij grote letters</option><option value="H12">Hedwig loopt vast of sluit zichzelf af</option><option value="H13">Werkt het met mijn hoortoestel, in het Vlaams, in het Engels?</option><option value="H14">Is Hedwig een medisch hulpmiddel? Mag het in het verpleeghuis?</option><option value="H15">Mijn moeder of vader wil het niet, of vindt het te veel</option></select>
+<div id="antwoord" class="antwoord"></div>
+</div>
+<p>Eerst zelf kijken: in Hedwig onder Instellingen › Hulp staat <strong>Werkt alles?</strong> met vijf controles (microfoon, internet, Speechmatics, spraakmodellen, iPad) en bij elke rode of oranje regel wat u kunt doen. Helpt dat niet: <a href="mailto:support@hedwig-app.nl">support@hedwig-app.nl</a>, of in Hedwig <em>Stuur de maker een bericht</em>. Een mens antwoordt binnen twee werkdagen.</p>
+<div class="faq">
+<h3 id="h1">Hedwig hoort niets; het bolletje blijft rood<small>H1</small></h3>
+<ol><li>Kijk bij Instellingen › Hulp › <strong>Werkt alles?</strong>: beweegt het microfoonbalkje als u iets zegt?</li><li>Zo niet: open de app Instellingen van de iPad › Privacy en beveiliging › Microfoon en zet Hedwig aan.</li><li>Zit de iPad in een dichte hoes? Zet hem rechtop in de standaard.</li><li>Is er een Bluetooth-hoortoestel of -koptelefoon verbonden? Die neemt soms de microfoon over. Zet Bluetooth even uit, of kies de microfoon bij Instellingen › Microfoon.</li><li>Beweegt het balkje wél en komt er toch geen tekst? Dan willen we het graag weten: stuur de uitkomst van Werkt alles? naar de maker.</li></ol>
+<h3 id="h2">De namen kloppen niet, of iedereen heet „Spreker 1”<small>H2</small></h3>
+<ol><li>Doe het voorstelrondje opnieuw voor de persoon die verkeerd herkend wordt: Toevoegen / verwijderen (de blauwe knop) › het potlood › stem opnieuw opnemen. Rustig praten, 15 seconden, een armlengte van de iPad.</li><li>Controleer bij Toevoegen / verwijderen of iedereen aan tafel is aangekruist en of het aantal mensen klopt (de plus als er iemand bij komt).</li><li>Tik tijdens het gesprek op de naam bij een zin en kies wie het is; Hedwig leert daarvan.</li><li>Twee stemmen die erg op elkaar lijken blijven lastig. Gaat het na een nieuwe opname nog mis bij duidelijk verschillende stemmen, mail ons dan.</li></ol>
+<h3 id="h3">Het gaat te snel; de lezer raakt in de war of wordt moe<small>H3</small></h3>
+<ol><li>Kies de eenvoudige weergave: Instellingen › Weergave › Eenvoudig. Alleen de laatste zin, groot, met het gezicht van wie praat.</li><li>Zet het leestempo op Rustig of Langzaam (Instellingen › Leestempo).</li><li>Begin klein: bij de koffie met twee mensen, niet op een verjaardag met twaalf. De lezer kan „wacht” zeggen; dan staat alles stil.</li><li>Dit is geen fout van de app. Het is de gewenning, en die kost tijd — soms weken.</li></ol>
+<h3 id="h4">Hedwig stopt na een paar minuten, of meldt dat het tegoed op is<small>H4</small></h3>
+<ol><li>Hedwig luistert dan verder op de iPad zelf (het bolletje wordt blauw); dat kost niets, de herkenning is iets minder goed.</li><li>Via internet luisteren: kijk in uw Speechmatics-account of er tegoed is, en bij Instellingen › Speechmatics of het maandbedrag niet is bereikt.</li><li>Wilt u helemaal zonder Speechmatics werken: Instellingen › Speechmatics › luisteren op de iPad.</li><li>Is er tegoed, is de sleutel goed en stopt Hedwig toch? Mail ons met de datum en tijd.</li></ol>
+<h3 id="h5">Zonder internet werkt het niet<small>H5</small></h3>
+<ol><li>Daarvoor moeten de spraakmodellen één keer op de iPad staan (ongeveer 700 MB): Instellingen › Zonder internet › Download. Op wifi, met de iPad aan de lader.</li><li>Controleer bij Werkt alles? of de iPad minstens 2 GB vrij heeft.</li><li>Lukt de download na twee pogingen niet, mail ons.</li></ol>
+<h3 id="h6">Ik kan Hedwig niet installeren, of de TestFlight-link werkt niet<small>H6</small></h3>
+<ol><li>Hedwig werkt op een iPad met iPadOS 17 of nieuwer; niet op een iPhone. Het best op een iPad met M-chip (iPad Air of iPad Pro van de laatste jaren).</li><li>Tijdens de test: installeer eerst de app TestFlight uit de App Store, open daarna de uitnodigingsmail op de iPad en tik op de knop.</li><li>Een uitnodiging verloopt na 90 dagen; mail ons dan voor een nieuwe.</li></ol>
+<h3 id="h7">De foto's onderin zijn weg, of de tekst is verdwenen<small>H7</small></h3>
+<ol><li>Dat is zo bedoeld. Zodra het gesprek stopt of de iPad op slot gaat, is de tekst weg: Hedwig bewaart geen gesprekken.</li><li>De foto's komen vanzelf terug zodra iemand praat en herkend wordt, of als u iemand aankruist bij Toevoegen / verwijderen.</li></ol>
+<h3 id="h8">Nieuwe iPad: alle personen zijn weg<small>H8</small></h3>
+<ol><li>De mensen, foto's en stemmen zitten bewust niet in de iCloud-back-up. Gebruik Overzetten naar een andere iPad (Instellingen › Overzetten): beide iPads op dezelfde wifi, de oude stuurt, de nieuwe ontvangt.</li><li>Lukt het overzetten niet, mail ons.</li></ol>
+<h3 id="h9">Iemand wil dat zijn foto of stem verdwijnt<small>H9</small></h3>
+<ol><li>Toevoegen / verwijderen › de prullenbak bij die persoon. Foto en stem worden van de iPad gewist.</li><li>Alles wissen: Instellingen › Wissen. Er staat niets op een server, dus daarmee is het weg.</li><li>Een formeel verzoek kunt u altijd mailen; de maker handelt dat zelf af.</li></ol>
+<h3 id="h10">De televisie laat het gesprek niet zien<small>H10</small></h3>
+<ol><li>Verbind de iPad met AirPlay of een USB-C-kabel; de televisie toont dan hetzelfde als de iPad.</li><li>Alleen de ondertitels, extra groot: Instellingen › Weergave › Tweede scherm. Dat geldt vanaf de volgende keer dat u verbindt.</li><li>Blijft het beeld zwart met een kabel, mail ons met het type televisie en kabel.</li></ol>
+<h3 id="h11">Het toetsenbord staat over de tekst, of knoppen vallen weg bij grote letters<small>H11</small></h3>
+<ol><li>Installeer de nieuwste versie (TestFlight of App Store).</li><li>Zet de letters één stap kleiner met de knop bovenin.</li><li>Gebeurt het met de nieuwste versie nog steeds? Mail ons met een schermafbeelding.</li></ol>
+<h3 id="h12">Hedwig loopt vast of sluit zichzelf af<small>H12</small></h3>
+<ol><li>Sluit Hedwig helemaal (veeg omhoog in het appoverzicht) en open haar opnieuw.</li><li>Staat de iPad op de nieuwste iPadOS? Instellingen van de iPad › Algemeen › Software-update.</li><li>Gebeurt het vaker, mail ons: wat deed u op dat moment, en de uitkomst van Werkt alles?</li></ol>
+<h3 id="h13">Werkt het met mijn hoortoestel, in het Vlaams, in het Engels?<small>H13</small></h3>
+<ol><li>Het hoortoestel en Hedwig staan los van elkaar; Hedwig vervangt het niet en stoort het niet.</li><li>Nederlands en Engels. Vlaams en dialect gaan zo goed als de spraakherkenning kan; Hedwig kan daar zelf niets aan verbeteren.</li><li>Een andere taal nodig? Laat het weten; we houden bij wat vaak gevraagd wordt.</li></ol>
+<h3 id="h14">Is Hedwig een medisch hulpmiddel? Mag het in het verpleeghuis?<small>H14</small></h3>
+<ol><li>Hedwig is een sociaal hulpmiddel, geen medisch hulpmiddel: voor gewone gesprekken, niet voor bij de dokter of belangrijke beslissingen.</li><li>Aan tafel vraagt de familie het zelf aan de mensen die meepraten; niets gaat naar een server, niets wordt bewaard. Wie niet wil, slaat de foto of de stem over.</li><li>Zorglocaties: neem contact op, dat is een apart traject.</li></ol>
+<h3 id="h15">Mijn moeder of vader wil het niet, of vindt het te veel<small>H15</small></h3>
+<ol><li>Dat is de belangrijkste vraag die we krijgen, en geen fout. Begin met de familie: laat hen Hedwig eerst zien en gebruiken, dan de lezer.</li><li>Klein beginnen: één keer bij de koffie, eenvoudige weergave, twee mensen. Niet meteen bij een drukke verjaardag.</li><li>Er komen korte filmpjes en een A4 om de eerste keer makkelijker te maken; zie Hulp.</li></ol>
+</div>
+<h2>Contact</h2>
+<p><a href="mailto:support@hedwig-app.nl">support@hedwig-app.nl</a>. Vermeld het nummer van de vraag (H1–H15) als dat er is, de versie van Hedwig en iPadOS (gaan vanzelf mee vanuit de app), en wat u op dat moment deed. Nooit tekst van een gesprek.</p>
+</main>
+<script>
+(function(){
+  var s=document.getElementById('keuze'),a=document.getElementById('antwoord');
+  function toon(id){var h=document.getElementById(id.toLowerCase());if(!h){a.className='antwoord';return;}
+    var ol=h.nextElementSibling;a.innerHTML='<strong>'+h.firstChild.textContent+'</strong>'+ol.outerHTML+'<p class="stap"><a href="#'+id.toLowerCase()+'">Vaste link: '+id+'</a></p>';a.className='antwoord open';}
+  s.addEventListener('change',function(){if(s.value){toon(s.value);history.replaceState(null,'','#'+s.value.toLowerCase());}});
+  var h=location.hash.replace('#','').toUpperCase();if(h&&/^H\d+$/.test(h)){s.value=h;toon(h);}
+})();
+</script>
+<footer>Hedwig is een merk en ontwerp van Kai Guldemond (© 2026) en wordt uitgegeven onder licentie door Chrysostomos B.V., Muiderstraat 1, 1011 PZ Amsterdam (KvK 34205455, btw NL8132.58.455.B01). Geen medisch hulpmiddel.</footer>
+</body>
+</html>
